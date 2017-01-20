@@ -1,5 +1,6 @@
 from fman import DirectoryPaneCommand, show_alert, show_status_message
 import os
+import datetime
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -53,7 +54,17 @@ class ViewFile(DirectoryPaneCommand):
             window.layout.addWidget(text_edit)
 
             # TODO: display status bar with file type, encoding, length, end line type, wrapping mode
-            #status_bar = QStatusBar()
-            #window.layout.addWidget(status_bar)
+
+            finfo = os.stat(file_name)
+            fsize = finfo.st_size
+            fsize = str(int(fsize/1024))+' KB' if int(fsize/1024)>0 else str(int(fsize))+' B'
+            flm = datetime.date.fromtimestamp(finfo.st_mtime)
+            text_statusbar = os.path.basename(file_name) + " \t - \t " + fsize + " \t - \t " + str(flm)
+            # text_statusbar = os.path.basename(file_name) + " \t\t\t " + str(int(fsize / 1024)) + " KB \t\t\t " + str(flm)
+
+            status_bar = QStatusBar()
+            status_bar.showMessage(text_statusbar, 0)
+
+            window.layout.addWidget(status_bar)
 
             window.show()
