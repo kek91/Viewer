@@ -30,11 +30,6 @@ class ViewFile(DirectoryPaneCommand):
             palette.setColor(QPalette.Text, textc)
             text_edit.setPalette(palette)
 
-            # set monospace font
-            font = QFont('Monospace')
-            font.setStyleHint(QFont.TypeWriter)
-            text_edit.setFont(font)
-
             # load text file into viewer
             file = QFile(file_name)
             file.open(QFile.ReadOnly)
