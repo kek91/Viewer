@@ -45,7 +45,7 @@ class ViewFile(DirectoryPaneCommand):
             window = ViewerWindow()
             window.resize(640, 480)
             #window.move(300, 300)
-            window.setWindowTitle('Viewer - [' + file_name + ']')
+            window.setWindowTitle('Viewer - ' + file_name)
 
             # add text_edit to qwidget
             window.layout = QVBoxLayout(window)
