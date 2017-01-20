@@ -39,7 +39,10 @@ class ViewFile(DirectoryPaneCommand):
             file = QFile(file_name)
             file.open(QFile.ReadOnly)
             text = file.readAll()
-            text = str(text, encoding='utf8')
+            try:
+                text = str(text, encoding='utf8')
+            except:
+                text = str(text)
             text_edit.setPlainText(text)
 
             global window # FIXME: keep reference to window in app scope
