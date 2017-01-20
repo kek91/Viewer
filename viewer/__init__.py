@@ -26,8 +26,8 @@ class ViewFile(DirectoryPaneCommand):
             palette = QPalette()
             bgcolor = QColor(39, 40, 34)
             palette.setColor(QPalette.Base, bgcolor)
-            #textc = QColor(255, 255, 255)
-            #pal.setColor(QPalette.Text, textc)
+            textc = QColor(200, 200, 200)
+            palette.setColor(QPalette.Text, textc)
             text_edit.setPalette(palette)
 
             # set monospace font
